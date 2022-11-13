@@ -1,0 +1,123 @@
+{{ define "layout" }}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Kolibrio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/main.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/uikit.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/alertify.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <!-- block action is used here as default replacement in case, there's 
+        any defined css template in content template files
+    -->
+    {{ block "css" .}} {{ end }}
+</head>
+
+<body>
+
+    <!-- header -->
+    <div uk-sticky class="uk-navbar-container tm-navbar-container uk-active miniDash">
+        <div class="uk-container uk-container-expand">
+            <nav uk-navbar>
+                <div class="uk-navbar-left">
+                    <a id="sidebar_toggle" class="uk-navbar-toggle" uk-navbar-toggle-icon></a>
+                    <a href="#" class="uk-navbar-item uk-logo intro-text">
+                        kolibrio
+                    </a>
+                </div>
+                <div class="uk-navbar-right uk-light">
+                    <ul class="uk-navbar-nav">
+                        <li class="uk-active">
+                            <a href="#">{{ .User.Name }} &nbsp;<span class="ion-ios-arrow-down"></span></a>
+                            <div uk-dropdown="pos: bottom-right; mode: click; offset: -17;">
+                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                    <li class="uk-nav-header">Options</li>
+                                    <li><a href="#">Edit Profile</a></li>
+                                    <li class="uk-nav-header">Actions</li>
+                                    <li><a href="./logout">Logout</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+
+    <!-- sidebar -->
+    <div id="sidebar" class="tm-sidebar-left uk-background-default">
+        {{ template "sidebar" .}}
+    </div>
+
+
+    <div class="content-padder content-background">
+        {{ template "content" .}}
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.12/jquery.transit.min.js" integrity="sha256-rqEXy4JTnKZom8mLVQpvni3QHbynfjPmPxQVsPZgmJY=" crossorigin="anonymous"></script>
+    <script src="/static/js/gauge.min.js"></script>
+    <script src="/static/js/apexcharts.min.js"></script>
+    <script src="/static/js/uikit.min.js"></script>
+    <script src="/static/js/uikit-icons.min.js"></script>
+    <script src="/static/js/sweetalert2.all.min.js"></script>
+    <script src="/static/js/alertify.min.js"></script>
+    <script src="/static/js/main.js"></script>
+
+    <!-- block action is used here as default replacement in case, there's 
+        any defined js template in content template files
+    -->
+    {{ block "js" .}} {{ end }}
+    <script>
+        // add dashboard function
+        function add_dashboard_to_db() {
+            let name = document.getElementById('dash-name').value;
+            let desc = document.getElementById('dash-desc').value;
+
+            if (isNotEmpty(name) && isNotEmpty(desc)) {
+                // make a post url request 
+                body = JSON.stringify({
+                    name: name,
+                    desc: desc
+                });
+                post_request('./dashboards/', body);
+            } else {
+                showWarningDialog('Well, make sure you filled all fields');
+            }
+        }
+
+        // add widget
+        function add_widget(dash) {
+            console.log(dash)
+            let name = document.getElementById('widget-name').value;
+            let type = document.getElementById('widget-type').value;
+            let device = document.getElementById('widget-device').value;
+            let source = document.getElementById('widget-source').value;
+
+            if (isNotEmpty(dash) && isNotEmpty(name) && isNotEmpty(type) && isNotEmpty(device) && isNotEmpty(source)) {
+                body = JSON.stringify({
+                    name: name,
+                    type: type,
+                    device: device,
+                    source: source,
+                    dash: dash
+                });
+                post_request('./widgets/', body);
+            } else {
+                showWarningDialog('Well, make sure you filled all fields');
+            }
+        }
+    </script>
+</body>
+
+</html>
+
+{{ end }}

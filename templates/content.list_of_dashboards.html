@@ -1,0 +1,74 @@
+{{ define "content" }}
+<div class="uk-section-small uk-section-default header">
+    <div class="uk-container uk-container-large">
+        <h1><span class="ion-speedometer"></span>Dashboards Management</h1>
+        <ul class="uk-breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li><span href="">Dashboards Management</span></li>
+        </ul>
+    </div>
+</div>
+<div class="uk-section-small">
+    <div class="uk-container uk-container-large">
+        <div class="uk-container">
+            <div class="uk-align-right">
+                <button uk-toggle="target: #add-dashboard" class="uk-button uk-button-primary uk-color-green" type="button">Add Dashboard</button>
+
+                <!-- This is the modal -->
+                <div id="add-dashboard" uk-modal>
+                    <div class="uk-modal-dialog uk-modal-body">
+                        <h2 class="uk-modal-title">Add Dashboard</h2>
+                        <form>
+                            <fieldset class="uk-fieldset">
+                                <!-- <legend></legend> -->
+                                <div class="uk-margin">
+                                    <input id="dash-name" class="uk-input" type="text" placeholder="Name">
+                                </div>
+
+                                <div class="uk-margin">
+                                    <textarea id="dash-desc" class="uk-textarea" rows="5" placeholder="Description"></textarea>
+                                </div>
+                            </fieldset>
+                        </form>
+                        <button class="uk-button uk-button-primary" type="button" onclick="add_dashboard_to_db()">Add</button>
+                        <button class="uk-button uk-button-danger uk-modal-close" type="button">Cancel</button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="uk-margin-top"></div>
+        <div class="uk-container-expand ">
+            <div uk-grid class="uk-child-width-1-1@s uk-child-width-1-3@m uk-child-width-1-3@xl">
+
+            {{ range .Dash }}
+            <div class="dashboard">
+                <div class="uk-card uk-card-default uk-card-small">
+                    <div class="uk-card-header">
+                        <h2 class="uk-card-title"><a href="/dashboards/{{.IDDashboard}}">{{.Name}}</a></h2>
+                    </div>
+                    <div class="uk-card-body">
+                        <div class="device">
+                            <p>Device: </p>
+                        </div>
+                        <div class="description">
+                            <p>Description: {{ .Desc }}</p>
+                        </div>
+                    </div>
+                    <div class="uk-card-footer">
+                        <a class="uk-icon-link" uk-icon="trash" onclick="deleteDashboardDB('{{.IDDashboard}}')"></a>
+                    </div>
+                </div>
+            </div> 
+            {{ end }}
+           </div>
+           
+        </div>
+    </div>
+</div>
+{{end}}
+
+{{ define "js" }}
+    <script src="hey"></script>
+{{ end }}

@@ -1,0 +1,140 @@
+{{ define "content" }}
+<div class="uk-section-small uk-section-default header">
+    <div class="uk-container uk-container-large">
+        <h1><span></span>Collections</h1>
+        <ul class="uk-breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li><span href="">Collections</span></li>
+        </ul>
+    </div>
+</div>
+<div class="uk-section-small">
+    <div class="uk-container uk-container-large">
+
+        <div class="uk-container">
+            <div class="uk-align-right">
+                <button uk-toggle="target: #add-device" class="uk-button uk-button-primary uk-color-green" type="button">Add Collection</button>
+
+                <!-- This is the modal -->
+                <div id="add-device" uk-modal>
+                    <div class="uk-modal-dialog uk-modal-body">
+                        <h2 class="uk-modal-title">Add Collection</h2>
+                        <form>
+                            <fieldset class="uk-fieldset">
+                                <!-- <legend></legend> -->
+                                <div class="uk-margin">
+                                    <input class="uk-input" type="text" placeholder="Name of Collection">
+                                </div>
+
+                                <div class="uk-margin">
+                                    <legend>Device</legend>
+                                    <select id="coll-device" class="uk-select" onchange="update_source()">
+                                        {{range .Devices }}
+                                        <option value="{{ .IDDEVICE }}">{{ .Name }}</option>
+                                        {{ end }}
+                                    </select>
+                                </div>
+
+                                <div class="uk-margin">
+                                    <legend>Source</legend>
+                                    <select id="coll-source" class="uk-select">
+                                        <!-- <option value="temperature">Temperature</option>
+                                        <option value="humidity">Humidity</option> -->
+                                    </select>
+                                </div>
+
+                                <div class="uk-margin">
+                                    <textarea class="uk-textarea" rows="5" placeholder="Description"></textarea>
+                                </div>
+
+                            </fieldset>
+                        </form>
+                        <button class="uk-button uk-button-primary" type="button" onclick="add_collection()">Add</button>
+                        <button class="uk-button uk-button-danger uk-modal-close" type="button">Cancel</button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="uk-margin-top"></div>
+        <div class="uk-container-expand ">
+
+            <div uk-grid class="uk-child-width-1-1">
+
+                <!-- <div>
+                    <div class="uk-card uk-card-default">
+                        <div class="uk-card-header">
+                            <h2 class="uk-card-title"><a>First Data collector</a></h2>
+                        </div>
+                        <div class="uk-card-footer">
+                            <a class="uk-icon-link" uk-icon="trash" onclick="deleteDevicedDB()"></a>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- <div>
+                    <div class="uk-card uk-card-default">
+                        <div class="uk-card-header">
+                            <h2 class="uk-card-title"><a>Temperature Table</a></h2>
+                        </div>
+                        <div class="uk-card-footer">
+                            <a class="uk-icon-link" uk-icon="trash" onclick="deleteDevicedDB()"></a>
+                        </div>
+                    </div>
+                </div> -->
+
+                {{ range .Colls }}
+                <div>
+                    <div class="uk-card uk-card-default">
+                        <div class="uk-card-header">
+                            <h2 class="uk-card-title"><a href="/collection/{{ .IDCollector }}">{{.Name}}</a></h2>
+                        </div>
+                        <div class="uk-card-footer">
+                            <a class="uk-icon-link" uk-icon="trash" onclick="delete_collection('{{ .IDCollector }}')"></a>
+                        </div>
+                    </div>
+                </div>
+
+                {{ end }}
+
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+{{end}} {{ define "js" }}
+<script>
+    // this function is going the update the sources
+    // based on option selected by the use
+    function update_source() {
+        console.log('UPDATE SOURCE');
+        let device = document.getElementById('coll-device').value;
+        let source = document.getElementById('coll-source');
+        let option = document.createElement("option");
+
+        // remove all elements
+        while (source.length > 0) {
+            source.remove(0);
+        }
+
+        get_request('/sources/' + device).then((res) => {
+            for (let i = 0; i < res.length; i++) {
+                let option = document.createElement("option");
+
+                option.value = res[i];
+                option.text = res[i];
+
+                source.add(option, null);
+            }
+        }).catch((err) => {
+            console.log(err);
+        });
+    }
+
+    // call update source
+    update_source();
+</script>
+{{ end }}

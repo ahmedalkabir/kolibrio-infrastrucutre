@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>miniDash</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/uikit.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/all.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/jquery.dataTables.min.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+</head>
+
+<body>
+    <div uk-sticky class="uk-navbar-container tm-navbar-container uk-active miniDash">
+        <div class="uk-container uk-container-expand">
+            <nav uk-navbar>
+                <div class="uk-navbar-left">
+                    <a id="sidebar_toggle" class="uk-navbar-toggle" uk-navbar-toggle-icon></a>
+                    <a href="#" class="uk-navbar-item uk-logo intro-text">
+                        kolibrio
+                    </a>
+                </div>
+                <div class="uk-navbar-right uk-light">
+                    <ul class="uk-navbar-nav">
+                        <li class="uk-active">
+                            <a href="#">Ahmed &nbsp;<span class="ion-ios-arrow-down"></span></a>
+                            <div uk-dropdown="pos: bottom-right; mode: click; offset: -17;">
+                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                    <li class="uk-nav-header">Options</li>
+                                    <li><a href="#">Edit Profile</a></li>
+                                    <li class="uk-nav-header">Actions</li>
+                                    <li><a href="#">Lock</a></li>
+                                    <li><a href="#">Logout</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div id="sidebar" class="tm-sidebar-left uk-background-default">
+        <center>
+            <div class="user">
+                <div class="uk-margin-top"></div>
+                <div id="name" class="uk-text-truncate">Ahmed Alkabir</div>
+                <div id="email" class="uk-text-truncate">ncamus@mail.ru</div>
+                <span id="status" data-enabled="true" data-online-text="Online" data-away-text="Away"
+                    data-interval="10000" class="uk-margin-top uk-label uk-label-success"></span>
+            </div>
+            <br />
+        </center>
+        <ul class="uk-nav uk-nav-default">
+
+            <li class="uk-nav-header">
+                Kolibrio
+            </li>
+            <li><a href="#"><i class="fa fa-database fa-lg uk-margin-right" aria-hidden="true"></i>Collection</a></li>
+
+            <li class="uk-nav-header">
+                Setting
+            </li>
+
+            <li><a href="#"><i class="fa fa-tachometer" aria-hidden="true"></i>Manage Dashboards</a></li>
+            <li><a href="#"><i class="fa fa-microchip fa-lg uk-margin-right" aria-hidden="true"></i>Manage Devices</a></li>
+        </ul>
+    </div>
+    <div class="content-padder content-background">
+        <div class="uk-section-small uk-section-default header">
+            <div class="uk-container uk-container-large">
+                <h1><span></span>Devices Management</h1>
+                <ul class="uk-breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li><span href="">Devices Management</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="uk-section-small">
+            <div class="uk-container uk-container-large">
+
+
+
+
+                <div class="uk-container">
+                    <div class="uk-align-right">
+                        <button uk-toggle="target: #add-device" class="uk-button uk-button-primary uk-color-green"
+                            type="button">Add Table</button>
+
+                        <!-- This is the modal -->
+                        <div id="add-device" uk-modal>
+                            <div class="uk-modal-dialog uk-modal-body">
+                                <h2 class="uk-modal-title">Add Device</h2>
+                                <form>
+                                    <fieldset class="uk-fieldset">
+                                        <!-- <legend></legend> -->
+                                        <div class="uk-margin">
+                                            <input class="uk-input" type="text" placeholder="Name of Device">
+                                        </div>
+
+                                        <div class="uk-margin">
+                                            <input class="uk-input" type="text" placeholder="Device ID">
+                                        </div>
+
+                                        <div class="uk-margin">
+                                            <select class="uk-select">
+                                                <option>MESHLY_1</option>
+                                                <option>LORA_1</option>
+                                            </select>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                                <button class="uk-button uk-button-primary" type="button"
+                                    onclick="addDeviceToDB()">Add</button>
+                                <button class="uk-button uk-button-danger uk-modal-close" type="button">Cancel</button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="uk-margin-top"></div>
+                <div class="uk-container-expand ">
+
+                    <div uk-grid class="uk-child-width-1-1">
+
+                        <div>
+                            <div class="uk-card uk-card-default">
+                                <div class="uk-card-header">
+                                    <h2 class="uk-card-title"><a>Temperature Table</a></h2>
+                                </div>
+                                <div class="uk-card-body">
+
+                                    <div>
+                                        <table id="table_id" class="display">
+                                            <thead>
+                                                <tr>
+                                                    <th>Column 1</th>
+                                                    <th>Column 2</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Row 1 Data 1</td>
+                                                    <td>Row 1 Data 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Row 2 Data 1</td>
+                                                    <td>Row 2 Data 2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                                <div class="uk-card-footer">
+                                    <a class="uk-icon-link" uk-icon="trash" onclick="deleteDevicedDB()"></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="uk-card uk-card-default">
+                                <div class="uk-card-header">
+                                    <h2 class="uk-card-title"><a>Temperature Table</a></h2>
+                                </div>
+                                <div class="uk-card-body">
+
+                                    <div>
+                                        <table id="meshly_1_humidity" class="display">
+                                            <thead>
+                                                <tr>
+                                                    <th>Column 1</th>
+                                                    <th>Column 2</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Row 1 Data 1</td>
+                                                    <td>Row 1 Data 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Row 2 Data 1</td>
+                                                    <td>Row 2 Data 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Row 2 Data 1</td>
+                                                    <td>Row 2 Data 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Row 2 Data 1</td>
+                                                    <td>Row 2 Data 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Row 2 Data 1</td>
+                                                    <td>Row 2 Data 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Row 2 Data 1</td>
+                                                    <td>Row 2 Data 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Row 2 Data 1</td>
+                                                    <td>Row 2 Data 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Row 2 Data 1</td>
+                                                    <td>Row 2 Data 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Row 2 Data 1</td>
+                                                    <td>Row 2 Data 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Row 2 Data 1</td>
+                                                    <td>Row 2 Data 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Row 2 Data 1</td>
+                                                    <td>Row 2 Data 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Row 2 Data 1</td>
+                                                    <td>Row 2 Data 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Row 2 Data 1</td>
+                                                    <td>Row 2 Data 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Row 2 Data 1</td>
+                                                    <td>Ahmed Alkabir</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Row 2 Data 1</td>
+                                                    <td>Row 2 Data 2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                                <div class="uk-card-footer">
+                                    <a class="uk-icon-link" uk-icon="trash" onclick="deleteDevicedDB()"></a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.12/jquery.transit.min.js"
+        integrity="sha256-rqEXy4JTnKZom8mLVQpvni3QHbynfjPmPxQVsPZgmJY=" crossorigin="anonymous"></script>
+
+    <script src="js/uikit.min.js"></script>
+    <script src="js/uikit-icons.min.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#table_id').DataTable();
+            $('#meshly_1_humidity').DataTable();
+
+        });
+    </script>
+</body>
+
+</html>

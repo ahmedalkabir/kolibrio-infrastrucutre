@@ -1,0 +1,130 @@
+{{ define "css" }}
+<link rel="stylesheet" type="text/css" media="screen" href="/static/css/jquery.dataTables.min.css"> {{ end }} {{ define "content" }}
+<div class="uk-section-small uk-section-default header">
+    <div class="uk-container uk-container-large">
+        <h1><span></span>{{ .Coll.Name }}</h1>
+        <ul class="uk-breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li><span href="">Collection</span></li>
+            <li><span href="">{{ .Coll.Name }}</span></li>
+        </ul>
+    </div>
+</div>
+<div class="uk-section-small">
+    <div class="uk-container uk-container-large">
+
+
+        <div class="uk-margin-top"></div>
+        <div class="uk-container-expand ">
+
+            <div uk-grid class="uk-child-width-1-1">
+                {{ range .Coll.Sources }}
+                <div>
+                    <div class="uk-card uk-card-default">
+                        <div class="uk-card-header">
+                            <h2 class="uk-card-title">
+                                {{ . }}
+                                <!-- <a></a> -->
+                            </h2>
+                        </div>
+                        <div class="uk-card-body">
+                            <div class="table">
+                                <table id="table_id" class="display">
+                                    <thead>
+                                        <tr>
+                                            <th>Column 1</th>
+                                            <th>Column 2</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Row 1 Data 1</td>
+                                            <td>Row 1 Data 2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Row 2 Data 1</td>
+                                            <td>Row 2 Data 2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Row 2 Data 1</td>
+                                            <td>Row 2 Data 2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Row 2 Data 1</td>
+                                            <td>Row 2 Data 2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Row 2 Data 1</td>
+                                            <td>Row 2 Data 2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Row 2 Data 1</td>
+                                            <td>Row 2 Data 2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Row 2 Data 1</td>
+                                            <td>Row 2 Data 2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Row 2 Data 1</td>
+                                            <td>Row 2 Data 2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Row 2 Data 1</td>
+                                            <td>Row 2 Data 2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Row 2 Data 1</td>
+                                            <td>Row 2 Data 2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Row 2 Data 1</td>
+                                            <td>Row 2 Data 2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Row 2 Data 1</td>
+                                            <td>Row 2 Data 2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Row 2 Data 1</td>
+                                            <td>Row 2 Data 2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Row 2 Data 1</td>
+                                            <td>Ahmed Alkabir</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Row 2 Data 1</td>
+                                            <td>Row 2 Data 2</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                        <div class="uk-card-footer">
+                            <a class="uk-icon-link" uk-icon="trash" onclick="deleteDevicedDB()"></a>
+                        </div>
+                    </div>
+                </div>
+                {{ end }}
+
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+{{end}} {{ define "js" }}
+<script src="/static/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#table_id').DataTable();
+        $('#meshly_1_humidity').DataTable();
+
+    });
+</script>
+{{end}}

@@ -1,0 +1,26 @@
+{{ define "sidebar" }}
+<center>
+    <div class="user">
+        <div class="uk-margin-top"></div>
+        <div id="name" class="uk-text-truncate">{{ .User.Name }}</div>
+        <div id="email" class="uk-text-truncate">{{ .User.Email }}</div>
+        <span id="status" data-enabled="true" data-online-text="Online" data-away-text="Away" data-interval="10000" class="uk-margin-top uk-label uk-label-success"></span>
+    </div>
+    <br />
+</center>
+<ul class="uk-nav uk-nav-default">
+
+    <li class="uk-nav-header">
+        Kolibrio
+    </li>
+    <li><a href="/dashboards"><i class="fa fa-tachometer" aria-hidden="true"></i>Dashboards</a></li>
+    <li><a href="/collection"><i class="fa fa-database fa-lg uk-margin-right" aria-hidden="true"></i>Collection</a></li>
+
+    <li class="uk-nav-header">
+        Setting
+    </li>
+
+
+    <li><a href="/devices"><i class="fa fa-microchip fa-lg uk-margin-right" aria-hidden="true"></i>Manage Devices</a></li>
+</ul>
+{{end}}

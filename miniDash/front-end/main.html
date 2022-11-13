@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>miniDash</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/uikit.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+</head>
+
+<body>
+    <div uk-sticky class="uk-navbar-container tm-navbar-container uk-active miniDash">
+        <div class="uk-container uk-container-expand">
+            <nav uk-navbar>
+                <div class="uk-navbar-left">
+                    <a id="sidebar_toggle" class="uk-navbar-toggle" uk-navbar-toggle-icon></a>
+                    <a href="#" class="uk-navbar-item uk-logo intro-text">
+                        Kolibrio
+                    </a>
+                </div>
+                <div class="uk-navbar-right uk-light">
+                    <ul class="uk-navbar-nav">
+                        <li class="uk-active">
+                            <a href="#">Ahmed &nbsp;<span class="ion-ios-arrow-down"></span></a>
+                            <div uk-dropdown="pos: bottom-right; mode: click; offset: -17;">
+                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                    <li class="uk-nav-header">Options</li>
+                                    <li><a href="#">Edit Profile</a></li>
+                                    <li class="uk-nav-header">Actions</li>
+                                    <li><a href="#">Lock</a></li>
+                                    <li><a href="#">Logout</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div id="sidebar" class="tm-sidebar-left uk-background-default">
+        <center>
+            <div class="user">
+                <div class="uk-margin-top"></div>
+                <div id="name" class="uk-text-truncate">Ahmed Alkabir</div>
+                <div id="email" class="uk-text-truncate">ncamus@mail.ru</div>
+                <span id="status" data-enabled="true" data-online-text="Online" data-away-text="Away" data-interval="10000" class="uk-margin-top uk-label uk-label-success"></span>
+            </div>
+            <br />
+        </center>
+        <ul class="uk-nav uk-nav-default">
+
+            <li class="uk-nav-header">
+                Kolibrio
+            </li>
+            <li><a href="#">Database Management</a></li>
+
+            <li class="uk-nav-header">
+                Setting
+            </li>
+
+            <li><a href="#">Manage Dashboards</a></li>
+            <li><a href="#">Manage Devices</a></li>
+        </ul>
+    </div>
+
+    <div class="content-padder content-background">
+        <div class="uk-section-small uk-section-default header">
+            <div class="uk-container uk-container-large">
+                <h1><span class="ion-speedometer"></span> Dashboard</h1>
+                <p>
+                    Welcome back, Ahmed Alkabir
+                </p>
+                <ul class="uk-breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li><span href="">Dashboard</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="uk-section-small">
+            <div class="uk-container uk-container-large">
+                <div uk-grid class="uk-child-width-1-1@s uk-child-width-1-2@m uk-child-width-1-4@xl">
+                    <div>
+                        <div class="uk-card uk-card-default uk-card-body">
+                            <div class="icon-large">
+                                <i class="fas fa-tachometer-alt uk-align-left"></i>
+                            </div>
+                            <div>
+                                <span class="statistics-text">Dashboards</span><br />
+                                <span class="statistics-number">
+                                    3
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="uk-card uk-card-default uk-card-body">
+                            <div class="icon-large">
+                                <i class="fas fa-microchip uk-align-left"></i>
+                            </div>
+                            <div>
+                                <span class="statistics-text">Devices Connected</span><br />
+                                <span class="statistics-number">
+                                    5
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- <div>
+                        <div class="uk-card uk-card-default uk-card-body">
+                            <span class="statistics-text">Website Traffic</span><br />
+                            <span class="statistics-number">
+                                123.238
+                                <span class="uk-label uk-label-danger">
+                                    13% <span class="ion-arrow-down-c"></span>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="uk-card uk-card-default uk-card-body">
+                            <span class="statistics-text">Total Invoices</span><br />
+                            <span class="statistics-number">
+                                2.316
+                                <span class="uk-label uk-label-success">
+                                    37% <span class="ion-arrow-up-c"></span>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="uk-card uk-card-default uk-card-body">
+                            <span class="statistics-text">Total Income</span><br />
+                            <span class="statistics-number">
+                                6.384€
+                                <span class="uk-label uk-label-success">
+                                    26% <span class="ion-arrow-up-c"></span>
+                                </span>
+                            </span>
+                        </div>
+                    </div> -->
+                </div>
+                <!-- <div uk-grid class="uk-child-width-1-1@s uk-child-width-1-2@l">
+                    <div>
+                        <div class="uk-card uk-card-default">
+                            <div class="uk-card-header">
+                                Website Traffic
+                            </div>
+                            <div class="uk-card-body">
+                                <canvas id="chart1"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="uk-card uk-card-default">
+                            <div class="uk-card-header">
+                                Website Traffic
+                            </div>
+                            <div class="uk-card-body">
+                                <canvas id="chart2"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.12/jquery.transit.min.js" integrity="sha256-rqEXy4JTnKZom8mLVQpvni3QHbynfjPmPxQVsPZgmJY=" crossorigin="anonymous"></script>
+
+    <script src="js/uikit.min.js"></script>
+    <script src="js/uikit-icons.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

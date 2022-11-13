@@ -1,0 +1,389 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.intro-text {
+    font-family: 'Permanent Marker', cursive !important;
+    color: white !important;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: 'Josefin Sans', sans-serif;
+    background: #141E30;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #243B55, #141E30);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #243B55, #141E30);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.miniDash {
+    background: #141E30 !important;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #243B55, #141E30) !important;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #243B55, #141E30) !important;
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.uk-logo,
+.uk-logo:hover,
+.uk-logo:active,
+.uk-logo:visited {
+    color: #ffffff;
+}
+
+.uk-navbar-toggle,
+.uk-navbar-toggle:hover,
+.uk-navbar-toggle:active,
+.uk-navbar-toggle:visited {
+    color: #ffffff;
+    padding-top: 2px;
+}
+
+.uk-navbar-container {
+    background-color: #1e87f0 !important;
+}
+
+.user>#name {
+    font-size: 22px;
+}
+
+.header {
+    box-sizing: border-box;
+    border-bottom: 1px #e5e5e5 solid;
+}
+
+.content-padder {
+    margin-left: 0px;
+}
+
+.content-background {
+    min-height: calc(100% - 80px);
+    background-color: #F0F0F0;
+}
+
+.statistics-text {
+    text-align: center;
+    font-size: 25px;
+}
+
+.statistics-number {
+    font-size: 50px;
+}
+
+.tm-sidebar-left {
+    position: fixed;
+    z-index: 100;
+    top: 80px;
+    bottom: 0;
+    box-sizing: border-box;
+    width: 240px !important;
+    padding: 40px 40px 60px 40px;
+    border-right: 1px #e5e5e5 solid;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.tm-sidebar-left::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+}
+
+.tm-sidebar-left::-webkit-scrollbar {
+    width: 6px;
+    background-color: #F5F5F5;
+}
+
+.tm-sidebar-left::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #bdbdbd;
+}
+
+.tm-sidebar-right {
+    position: absolute;
+    top: 0;
+    left: calc(100% + 0px);
+    width: 200px
+}
+
+@media(max-width: 960px) {
+    .tm-sidebar-left {
+        opacity: 0;
+    }
+}
+
+@media (min-width: 960px) {
+    .content-padder {
+        margin-left: 240px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .tm-sidebar-right {
+        left: calc(100% + 0px);
+    }
+    .tm-sidebar-left+.tm-main {
+        padding-left: 40px;
+        opacity: 0 !important;
+    }
+}
+
+@media (min-width: 1400px) {
+    .tm-sidebar-left {
+        width: 300px !important;
+        padding: 45px 45px 60px 45px
+    }
+    .tm-sidebar-right {
+        left: calc(100% + 60px)
+    }
+    .tm-sidebar-left+.tm-main {
+        padding-left: 40px
+    }
+    .content-padder {
+        margin-left: 300px;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: #f0f0f0;
+    /*this can also be transparent*/
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    width: 1px;
+    background-color: #1e87f0;
+    border-top: 4px solid #f0f0f0;
+    border-right: 3px solid #f0f0f0;
+    border-bottom: 4px solid #f0f0f0;
+    border-left: 3px solid #f0f0f0;
+}
+
+::selection {
+    background-color: #d1eefe;
+    color: #1e87f0;
+}
+
+::moz-selection {
+    background-color: #d1eefe;
+    color: #1e87f0;
+}
+
+.uk-color-green {
+    background: #27ae60 !important;
+}
+
+.dashboard {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+canvas {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+
+/* toggle switch --> it's going to be used as main switch*/
+
+.switch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 70px;
+}
+
+.switch input {
+    display: none;
+}
+
+.switch input+span {
+    width: 48px;
+    height: 28px;
+    border-radius: 14px;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+    display: block;
+    position: relative;
+    background: #FF4651;
+    box-shadow: 0 8px 16px -1px rgba(255, 70, 81, 0.2);
+}
+
+.switch input+span:before,
+.switch input+span:after {
+    content: '';
+    display: block;
+    position: absolute;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+}
+
+.switch input+span:before {
+    top: 5px;
+    left: 5px;
+    width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    border: 5px solid #fff;
+}
+
+.switch input+span:after {
+    top: 5px;
+    left: 32px;
+    width: 6px;
+    height: 18px;
+    border-radius: 40%;
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    background: #fff;
+    opacity: 0;
+}
+
+.switch input+span:active {
+    -webkit-transform: scale(0.92);
+    transform: scale(0.92);
+}
+
+.switch input:checked+span {
+    background: #48EA8B;
+    box-shadow: 0 8px 16px -1px rgba(72, 234, 139, 0.2);
+}
+
+.switch input:checked+span:before {
+    width: 0px;
+    border-radius: 3px;
+    margin-left: 27px;
+    border-width: 3px;
+    background: #fff;
+}
+
+.switch input:checked+span:after {
+    -webkit-animation: blobChecked .35s linear forwards .2s;
+    animation: blobChecked .35s linear forwards .2s;
+}
+
+.switch input:not(:checked)+span:before {
+    -webkit-animation: blob .85s linear forwards .2s;
+    animation: blob .85s linear forwards .2s;
+}
+
+@-webkit-keyframes blob {
+    0%,
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    30% {
+        -webkit-transform: scale(1.12, 0.94);
+        transform: scale(1.12, 0.94);
+    }
+    60% {
+        -webkit-transform: scale(0.96, 1.06);
+        transform: scale(0.96, 1.06);
+    }
+}
+
+@keyframes blob {
+    0%,
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    30% {
+        -webkit-transform: scale(1.12, 0.94);
+        transform: scale(1.12, 0.94);
+    }
+    60% {
+        -webkit-transform: scale(0.96, 1.06);
+        transform: scale(0.96, 1.06);
+    }
+}
+
+@-webkit-keyframes blobChecked {
+    0% {
+        opacity: 1;
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+    }
+    30% {
+        -webkit-transform: scaleX(1.44);
+        transform: scaleX(1.44);
+    }
+    70% {
+        -webkit-transform: scaleX(1.18);
+        transform: scaleX(1.18);
+    }
+    50%,
+    99% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        opacity: 0;
+    }
+}
+
+@keyframes blobChecked {
+    0% {
+        opacity: 1;
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+    }
+    30% {
+        -webkit-transform: scaleX(1.44);
+        transform: scaleX(1.44);
+    }
+    70% {
+        -webkit-transform: scaleX(1.18);
+        transform: scaleX(1.18);
+    }
+    50%,
+    99% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        opacity: 0;
+    }
+}
+
+html {
+    -webkit-font-smoothing: antialiased;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+.icon-large {
+    font-size: 6em;
+    /* font-weight: 800; */
+}
+
+/* I want it to center elements */
+.center-element {
+
+  }
